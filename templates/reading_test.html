@@ -8,7 +8,7 @@
     <h1>IELTS Reading Test</h1>
     {% for text in reading_texts %}
         <h2>{{ text.title }}</h2>
-        <img src="{{ text.image.url }}" alt="{{ text.title }}">  <!-- Corrected this line -->
+        <img src="{{ text.image.url }}" alt="{{ text.title }}"> 
         <form method="post">
             {% csrf_token %}
             {% for question in text.questions.all %}
