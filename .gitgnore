@@ -1,1 +1,106 @@
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django migration files
+**/migrations/
+!*/migrations/__init__.py
+
+# Environment
+.env
 .venv/
+venv/
+env/
+ENV/
+Pipfile.lock
+
+# Virtualenv
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+*.iml
+**/.idea/
+**/*.iml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Test coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Sphinx documentation
+docs/_build/
+build/
+dist/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Gunicorn
+gunicorn.pid
+
+# Docker
+*.pid
+*.tar
+*.tgz
+*.bak
+
+# Node stuff (if using npm/yarn for static)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv files
+*.env.*
+
+# Secret files (custom rule)
+secrets.json
+
+# Database dumps
+*.sql
+*.sqlite3
+*.dump
