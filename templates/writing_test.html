@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Writing Test</title>
+</head>
+<body>
+    <h1>IELTS Writing Test</h1>
+     <h3> You should spend about 20 minutes on this task. 
+            <br/>
+            Write at least 150 words.
+    </h3>
+    {% if writing_text %}
+        <h2>{{ writing_text.wtitle }}</h2>
+        
+        {% if writing_text.writing_image %} 
+            <img src="{{ writing_text.writing_image.url }}" alt="{{ writing_text.wtitle }}" style="max-width: 100%; height: auto;">
+        {% else %}
+            <p>No image available for this writing text.</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <textarea name="user_answer" rows="10" cols="100" placeholder="Write your answer here..."></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    {% else %}
+        <p>No writing text available.</p>
+    {% endif %}
+</body>
+</html>

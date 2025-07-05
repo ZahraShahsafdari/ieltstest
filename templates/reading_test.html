@@ -2,25 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IELTS Reading Test</title>
 </head>
 <body>
     <h1>IELTS Reading Test</h1>
-    {% for text in reading_texts %}
-        <h2>{{ text.title }}</h2>
-        <img src="{{ text.image.url }}" alt="{{ text.title }}"> 
-        <form method="post">
-            {% csrf_token %}
-            {% for question in text.questions.all %}
-                <p>{{ question.question_text }}</p>
-                {% for answer in question.answers.all %}
-                    <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
-                    {{ answer.answer_text }}<br>
-                {% endfor %}
-            {% endfor %}
-            <br/>
-            <button type="submit">Submit</button>
-        </form>
-    {% endfor %}
+    {% if reading_texts %}
+        {% for text in reading_texts %}
+            <h2>{{ text.rtitle }}</h2>
+            <img src="{{ text.rimage.url }}" alt="{{ text.rtitle }}">
+            <form method="post">
+                {% csrf_token %}
+                <h2>Questions</h2>
+                {% if text.rquestions.all %}
+                    {% for question in text.rquestions.all %}
+                        <p>{{ question.rquestion_text }}</p>
+                        {% for answer in question.ranswers.all %}
+                            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
+                            {{ answer.ranswer_text }}<br>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <p>No questions available for this reading text.</p>
+                {% endif %}
+                <br/>
+                <button type="submit">Submit</button>
+            </form>
+        {% endfor %}
+    {% else %}
+        <p>No reading texts available.</p>
+    {% endif %}
 </body>
 </html>

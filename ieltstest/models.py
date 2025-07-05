@@ -1,25 +1,70 @@
 from django.db import models
 
-from django.db import models
-
+# Reading Test Part --------------------------------------------------
 class ReadingText(models.Model):
-    title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='reading_images/')
+    rtitle = models.CharField(max_length=200)
+    rimage = models.ImageField(upload_to='reading_images/')
 
     def __str__(self):
-        return self.title
+        return self.rtitle
 
-class Question(models.Model):
-    reading_text = models.ForeignKey(ReadingText, on_delete=models.CASCADE, related_name='questions')
-    question_text = models.CharField(max_length=300)
-
-    def __str__(self):
-        return self.question_text
-
-class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
-    answer_text = models.CharField(max_length=200)
-    is_correct = models.BooleanField(default=False)
+class RQuestion(models.Model):
+    reading_text = models.ForeignKey(ReadingText, on_delete=models.CASCADE, related_name='rquestions')
+    rquestion_text = models.CharField(max_length=300)
 
     def __str__(self):
-        return self.answer_text
+        return self.rquestion_text
+
+class RAnswer(models.Model):
+    rquestion = models.ForeignKey(RQuestion, on_delete=models.CASCADE, related_name='ranswers')
+    ranswer_text = models.CharField(max_length=200)
+    is_correct_for_reading = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.ranswer_text
+
+# Listening Test Part --------------------------------------------------
+class ListeningText(models.Model):
+    ltitle = models.CharField(max_length=200)
+    laudio_file = models.FileField(upload_to='listening_audio/')
+
+    def __str__(self):
+        return self.ltitle
+
+class LQuestion(models.Model):
+    listening_text = models.ForeignKey(ListeningText, on_delete=models.CASCADE, related_name='lquestions')
+    lquestion_text = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.lquestion_text
+
+class LAnswer(models.Model):
+    lquestion = models.ForeignKey(LQuestion, on_delete=models.CASCADE, related_name='lanswers')
+    lanswer_text = models.CharField(max_length=200)
+    is_correct_for_listening = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.lanswer_text
+    
+# Writing Test Part --------------------------------------------------
+class WritingText(models.Model):
+    wtitle = models.CharField(max_length=200)
+    writing_image = models.ImageField(upload_to='writing_images/', null=True) 
+
+    def __str__(self):
+        return self.wtitle
+
+class WQuestion(models.Model):
+    writing_text = models.ForeignKey(WritingText, on_delete=models.CASCADE, related_name='wquestions')
+    wquestion_text = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.wquestion_text
+
+class WAnswer(models.Model):
+    wquestion = models.ForeignKey(WQuestion, on_delete=models.CASCADE, related_name='wanswers')
+    wanswer_text = models.TextField()
+
+    def __str__(self):
+        return self.wanswer_text
+
