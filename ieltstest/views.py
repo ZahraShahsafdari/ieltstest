@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
+from . import models
 from .models import ReadingText, ListeningText, WritingText, WAnswer
+
+def index(request):
+    return render(request, 'index.html')
+
 
 def reading(request):
     reading_texts = ReadingText.objects.prefetch_related('rquestions__ranswers').all()
