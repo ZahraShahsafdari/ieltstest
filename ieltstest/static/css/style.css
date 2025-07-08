@@ -400,10 +400,9 @@ ol {
 	padding: 44px 38px;
 }
 
-.course-search-form input[type=text],
-.course-search-form input[type=email] {
+.course-search-form input[type=text] {
 	height: 56px;
-	width: 36.6%;
+	width: 650px;
 	padding: 0 30px;
 	margin-right: 18px;
 	float: left;

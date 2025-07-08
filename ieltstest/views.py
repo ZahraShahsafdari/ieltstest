@@ -5,7 +5,6 @@ from .models import ReadingText, ListeningText, WritingText, WAnswer
 def index(request):
     return render(request, 'index.html')
 
-
 def reading(request):
     reading_texts = ReadingText.objects.prefetch_related('rquestions__ranswers').all()
     return render(request, 'reading_test.html', {'reading_texts': reading_texts})
