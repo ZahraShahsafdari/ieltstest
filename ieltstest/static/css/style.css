@@ -403,7 +403,8 @@ ol {
 .course-search-form input[type=text],
 .course-search-form input[type=email] {
 	height: 56px;
-	width: 36.6%;
+	width: 100%;
+	margin-bottom: 20px;
 	padding: 0 30px;
 	margin-right: 18px;
 	float: left;
@@ -1477,7 +1478,7 @@ ol {
 	}
 	.course-search-form input[type=text],
 	.course-search-form input[type=email] {
-		width: 34.6%;
+		width: 100%;
 	}
 	.course-search-form .site-btn {
 		min-width: 173px;
@@ -1529,7 +1530,7 @@ ol {
 	}
 	.course-search-form input[type=text],
 	.course-search-form input[type=email] {
-		width: 48.1%;
+		width: 100%;
 		margin-bottom: 20px;
 	}
 	.course-search-form input[type=text].last-m,
