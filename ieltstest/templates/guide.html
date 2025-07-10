@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Guide page {% endblock %}
+
+{% block content %}
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Guide</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+    <section class="about-page spad pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8" style="text-align: justify;">
+                        <h2>IELTS Guides</h2>
+                        <br/>
+                        <p>The Internationl English Language Testing System, known as IELTS, is a test that measures the language proficiency of people who want to study or work in enviroments where English is used as a language of communication. An easy-to-use 9-band scale clearly identifies proficiency level, from non-user (band score 1) through to expert (band score 9).
+                        </p>
+                        <br/>
+                        <h4 style="color: red;">Academic or General Training</h4>
+                        <p>IELTS is available in two test formats - Academic or General Training - and provides a valid and accurate assessment of the four language skills: listening, reading, writing and speaking.
+                        </p>
+                        <br/>
+                        <h4 style="color: red;">IELTS for Migration</h4>
+                        <p>IELTS is accepted for migration to Australia, Canada, New Zealand and the United Kingdom.
+                        </p>
+                        <br/>
+                        <h4 style="color: red;">IELTS for Study</h4>
+                        <p>Thosands of universities, schools, training colleges and tertiary institutions all over the world use IELTS results.
+                        </p>
+                        <br/>
+                        <h4 style="color: red;">IELTS for Work</h4>
+                        <p>Many professional registration bodies and employers rely on IELTS as evidence of English language proficiency.
+                        </p>
+                        <br/>
+                        <h4 style="color: red;">The IELTS Computer Based Test Guide</h4>
+                        <p>With the world taking on a more computer-based approach towards testing, it is no surprise that many standardized tests are becoming digitized. IELTS is now offering the convenience of computer-delivered testing for Listening, Reading and Writing sections. The Speaking section will still remain face-to-face with an examiner. This type of exam is typically referred to as either the CD IELTS (Computer-delivered IELTS) or CBT (computer-based test).</p>
+                        <p>The IELTS test utilizes the same content and the same marking system for both exam formats. The only major difference is that the computer-based test has the reading, writing, and listening completed on the computer. In the case of both exams, the speaking section is held in the form of an interview. For the listening section, there is a small difference between the two formats.</p>
+                        <p>For paper-based tests, you have 10 minutes at the end of the IELTS listening section to transfer all of your answers from the question paper to your answer sheet. For the computer-based test, you type your answers directly into the computer and will have two minutes to check your answers at the end before submitting your test. Finally, computer-based testing can offer quicker results than paper-based. Paper-based tests take approximately 13 days for results, while computer-based results are given within 5 – 7 days. In addition, computer-based testing offers more test date availability than paper-based testing. This is crucial if you want to re-take your IELTS exam or improve your score for whatever reason.</p>
+                        <p>For test-takers around the world, you can take the IELTS test on the computer so long as it is offered by your local testing center. Also, many test centers which have computer-based testing usually offer both the academic or general training versions of the IELTS exam. Testing locations that offer computer-based testing will vary depending on the region. Some countries will offer more test centers with the option for computer-based testing for all IELTS test takers. Other nations, on the other hand, may only offer the computer-based IELTS for those applying for UKVI.</p>
+                </div>
+            </div>    
+        </div>
+    </section>
+    <br/> <br/> <br/>
+    <!-- Page end -->
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Download page {% endblock %}
+
+{% block content %}
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Downloads</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+        <section class="download-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8" style="text-align: justify;">
+            <h2>Downloadable Resources</h2>
+            <br/>
+            <p>Welcome to our Downloadable Resources section! Here, you will find a variety of helpful materials designed to assist you in your IELTS preparation. Whether you are aiming for academic or general training, these resources provide valuable insights, practice tests, and essential tips to enhance your understanding of the IELTS exam format and improve your performance. Feel free to download any of the materials below to support your study journey and achieve your desired band score.</p>
+            <ul>
+                ► <a href="{% static 'downloads/Writing Style Guidebook.pdf' %}" download>Adverb List</a>
+                <br/><br/>
+                ► <a href="{% static 'downloads/adjectives_list.pdf' %}" download>Adjective List</a>
+                <br/><br/>
+                ► <a href="{% static 'downloads/linking-words.pdf' %}" download>Linking Words</a>
+                <br/><br/>
+                ► <a href="{% static 'downloads/22105-key-vocabulary-list.pdf' %}" download>Vocabulary List</a>
+                <br/><br/>
+                ► <a href="{% static 'downloads/academic-word-list.pdf' %}" download>Academic Word List</a>
+                <br/><br/>
+                ► <a href="{% static 'downloads/grammar_for_academic_writing_ism.pdf' %}" download>Grammar for Academic Writing</a>
+            </ul>
+            </div>
+            </div>
+            </div>
+        </section>
+    <!-- Page end -->
+
+{% endblock %}

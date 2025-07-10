@@ -20,10 +20,13 @@ def contact(request):
             form = ContactForm() 
     else:
         form = ContactForm()
-    
     return render(request, 'contact.html', {'form': form})
 
+def guide(request):
+    return render(request, 'guide.html')
 
+def download(request):
+    return render(request, 'download.html')
 
 #-------------------------------------------------------------------------------------------------
 def reading(request):
