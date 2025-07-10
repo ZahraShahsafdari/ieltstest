@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} About {% endblock %}
+
+{% block content %}
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>About</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+    <section class="about-page spad pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8" style="text-align: justify;">
+                        <h2>About Our Website</h2>
+                        <br/>
+                        <p>Welcome to our website, your ultimate resource for everything related to the IELTS test. We are dedicated to providing comprehensive information about the IELTS exam, including test formats, scoring criteria, and preparation strategies.</p>
+                        <p>Our platform offers a variety of skills development resources to help you excel in each section of the IELTS test. Whether you are looking to improve your listening, reading, writing, or speaking skills, we have curated materials and tips to guide you through your preparation journey.</p>
+                        <p>Additionally, we provide downloadable resources, including practice tests, study guides, and useful links to enhance your learning experience. Our goal is to equip you with the knowledge and tools necessary to achieve your desired IELTS score.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br/> <br/> <br/>
+    <!-- Page end -->
+
+{% endblock %}
