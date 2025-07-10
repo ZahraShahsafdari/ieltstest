@@ -1,10 +1,29 @@
 from django.shortcuts import render, redirect
 from . import models
+from django.contrib import messages 
 from .models import ReadingText, ListeningText, WritingText, WAnswer
+from .forms import ContactForm
+
 
 def index(request):
     return render(request, 'index.html')
 
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your message has been sent successfully!')
+            form = ContactForm() 
+    else:
+        form = ContactForm()
+    
+    return render(request, 'contact.html', {'form': form})
+
+
+
+#-------------------------------------------------------------------------------------------------
 def reading(request):
     reading_texts = ReadingText.objects.prefetch_related('rquestions__ranswers').all()
     return render(request, 'reading_test.html', {'reading_texts': reading_texts})

@@ -6,8 +6,8 @@ app_name = 'ieltstest'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('contact/', views.contact, name='contact'),
     #path('about/', views.about, name='about'),
-    #path('contact/', views.contact, name='contact'),
     #path('search/', views.search, name='search'),
 
     path('reading_test/', views.reading, name='reading'),
