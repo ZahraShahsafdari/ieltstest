@@ -11,6 +11,11 @@ urlpatterns = [
     path('guide/', views.guide, name='guide'),
     path('download/', views.download, name='download'),
     path('search/', views.search, name='search'),
+    path('readingmore/', views.readingmore, name='readingmore'),
+    path('writingmore/', views.writingmore, name='writingmore'),
+    path('listeningmore/', views.listeningmore, name='listeningmore'),
+
+
 
     path('reading_test/', views.reading, name='reading'),
     path('listening_test/', views.listening, name='listening'),

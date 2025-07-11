@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Listening page {% endblock %}
+
+{% block content %}
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Listening</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+        <section class="listening-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8" style="text-align: justify;">
+                    <h2>IELTS Listening</h2>
+                    <br/>
+                    <p>The IELTS Listening is the same for both the IELTS Academic test and General Training test. The Listening test assesses your ability to understand main ideas, detailed information, opinions, purpose and attitudes of the speakers, as well as your ability to follow the development of ideas.</p>
+                    <p>You will listen to 4 recordings in your Listening test and need to answer 40 questions based on these recordings. The first two recordings deal with situations you might experience in an everyday context. The last two recordings, however, focus on situations that might occur in an education or training context.</p>
+                    <p>In recordings 1 and 3 you will hear a conversation between two or more speakers, however in recordings 2 and 4 will hear a monologue. You will need to answer questions connected to the recordings ranging from multiple choice to matching information, headings, features and sentence endings, as well as sentence, summary, note, table, diagram or flow-chart completion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Page end -->
+
+{% endblock %}

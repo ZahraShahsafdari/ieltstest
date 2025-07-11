@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Writing page {% endblock %}
+
+{% block content %}
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Writing</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+        <section class="writing-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8" style="text-align: justify;">
+                    <h2>IELTS Writing</h2>
+                    <br/>
+                    <p>The IELTS Writing test evaluates your ability to express yourself in written English and is designed to assess your writing skills in an academic or general context, depending on whether you are taking the Academic or General Training version of the IELTS test.
+                        <strong>Here's an overview of the IELTS Writing test:</strong></p>
+                    <br/>
+                    <h4>Test Format:</h4>
+                    <p>The IELTS Writing test consists of two tasks: Task 1 and Task 2.
+                        In the Academic version of the test, Task 1 requires test takers to describe visual information, such as graphs, charts, or diagrams. Task 2 in the Academic version involves writing an essay in response to a question or statement. 
+                        In the General Training version, Task 1 requires writing a letter, often based on a given situation, and Task 2 involves writing an essay on a general topic.</p>
+                    <br/>
+                    <h4>Word Count:</h4>
+                    <p>In Task 1, test takers are usually required to write at least 150 words.
+                        In Task 2, test takers are expected to write at least 250 words.</p>
+                    <br/>
+                    <h4>Timing:</h4>
+                    <p>Test takers have 60 minutes in total to complete both tasks.
+                        It's advisable to allocate approximately 20 minutes for Task 1 and 40 minutes for Task 2.</p>
+                    <h4>Scoring:</h4>
+                    <p>Each task is scored separately on a scale of 0 to 9.
+                        The scores for both tasks are then averaged to determine your overall Writing band score.</p>
+                    <h4>Skills Assessed:</h4>
+                    <p>Task 1 assesses your ability to present and describe visual information logically and coherently (Academic version) or to convey information in a clear and appropriate tone (General Training version). 
+                        Task 2 assesses your ability to provide well-structured arguments, opinions, and ideas in written form.
+                        Preparing for the IELTS Writing test typically involves practicing writing essays and descriptions, understanding the format and expectations of each task, and improving your grammar and vocabulary.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Page end -->
+
+{% endblock %}

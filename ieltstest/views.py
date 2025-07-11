@@ -45,6 +45,18 @@ def search(request):
                 results = []
     return render(request, 'search.html', {'results': results})
 
+
+def readingmore(request):
+    return render(request, 'readingmore.html')
+
+
+def listeningmore(request):
+    return render(request, 'listeningmore.html')
+
+
+def writingmore(request):
+    return render(request, 'writingmore.html')
+
 #-------------------------------------------------------------------------------------------------
 def reading(request):
     reading_texts = ReadingText.objects.prefetch_related('rquestions__ranswers').all()

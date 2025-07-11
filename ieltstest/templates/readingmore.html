@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Reading page {% endblock %}
+
+{% block content %}
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Reading</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+        <section class="reading-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8" style="text-align: justify;">
+                    <h2>IELTS Reading</h2>
+                    <br/>
+                    <p>IELTS Reading is one of the four components of the International English Language Testing System (IELTS) test, which is designed to assess a test taker's proficiency in the English language. The IELTS Reading test evaluates your ability to understand and interpret written texts in English. This test is meant to assess your reading skills in an academic context and is applicable for both academic and general training versions of the IELTS test. 
+                       <strong>Here's an overview of the IELTS Reading test:</strong></p>
+                    <br/>
+                    <h4>Test Format:</h4>
+                    <p>The IELTS Reading test consists of three reading passages or texts. In the Academic version of the test, these texts are taken from academic sources like textbooks, journals, or articles. In the General Training version, the texts are more every day and practical, such as advertisements, notices, or workplace-related documents. There are a total of 40 questions in the test, with each passage followed by a set of questions. </p>
+                    <br/>
+                    <h4>Question Types:</h4>
+                    <p>The questions in the IELTS Reading test cover a range of question types, including multiple-choice, matching information, matching headings, sentence completion, summary completion, and True/False/Not Given or Yes/No/Not Given questions. 
+                        Each passage may have a mix of different question types.</p>
+                    <br/>
+                    <h4>Timing:</h4>
+                    <p>Test takers typically have 60 minutes to complete the entire IELTS Reading test. 
+                        It is advisable to allocate your time wisely, as the three passages vary in length and complexity. You may want to spend more time on the more challenging passages and questions.</p>
+                    <br/>
+                    <h4>Scoring:</h4>
+                    <p>Each correct answer in the IELTS Reading test earns you one point.
+                        The total number of correct answers is converted into a band score on a scale of 0 to 9. Your overall Reading band score is determined by your performance in the test.</p>
+                    <br/>
+                    <h4>Skills Assessed:</h4>
+                    <p>The IELTS Reading test assesses various reading skills, including the ability to understand main ideas, supporting details, and implied meanings in texts. 
+                        It also evaluates your ability to locate specific information, make inferences, and recognise the writer's opinions, attitudes, and purposes. 
+                        Preparing for the IELTS Reading test typically involves practicing reading comprehension exercises, familiarising yourself with different types of reading texts and question formats, and improving your reading speed and comprehension skills. Many test takers find it helpful to use official IELTS practice materials and take practice tests to get a sense of the test's format and level of difficulty. Additionally, time management during the test is crucial to ensure you can complete all three passages and questions within the allotted time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Page end -->
+
+{% endblock %}
