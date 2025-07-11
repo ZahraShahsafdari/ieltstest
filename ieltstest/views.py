@@ -1,15 +1,17 @@
 from django.shortcuts import render, redirect
 from . import models
 from django.contrib import messages 
-from .models import ReadingText, ListeningText, WritingText, WAnswer
-from .forms import ContactForm
+from .models import ReadingText, ListeningText, WritingText, WAnswer, UniversityList
+from .forms import ContactForm, SearchForm
 
 
 def index(request):
     return render(request, 'index.html')
 
+
 def about(request):
     return render(request, 'about.html')
+
 
 def contact(request):
     if request.method == 'POST':
@@ -22,11 +24,26 @@ def contact(request):
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
 
+
 def guide(request):
     return render(request, 'guide.html')
 
+
 def download(request):
     return render(request, 'download.html')
+
+
+def search(request):
+    results = []
+    if request.method == 'GET':
+        ielts_score = request.GET.get('ielts_score', None)
+        if ielts_score:
+            try:
+                ielts_score = float(ielts_score)
+                results = UniversityList.objects.filter(ielts_score_required=ielts_score)
+            except ValueError:
+                results = []
+    return render(request, 'search.html', {'results': results})
 
 #-------------------------------------------------------------------------------------------------
 def reading(request):

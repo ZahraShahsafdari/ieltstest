@@ -79,3 +79,14 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.subject}"
+    
+# Universities List ----------------------------------------
+class UniversityList(models.Model):
+    name = models.CharField(max_length=255)
+    country = models.CharField(max_length=100)
+    world_ranking = models.IntegerField(null=True)
+    logo = models.ImageField(upload_to='university_logos/')
+    ielts_score_required = models.FloatField()
+
+    def __str__(self):
+        return self.name

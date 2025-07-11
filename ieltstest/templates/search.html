@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Result page {% endblock %}
+
+{% block content %}
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Search</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+        <section class="result-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2>Search Results for IELTS Score:</h2>
+                        <br/>
+                        <div class="university-grid">
+                            {% for university in results %}
+                                <div class="university-card">
+                                    <img src="{{ university.logo.url }}" alt="{{ university.name }} logo" class="university-logo">
+                                    <h4>{{ university.name }}</h4>
+                                    <p><strong>Country:</strong> {{ university.country }}</p>
+                                    <p><strong>World Ranking:</strong> {{ university.world_ranking }}</p>
+                                    <p><strong>IELTS Score Required:</strong> {{ university.ielts_score_required }}</p>
+                                </div>
+                            {% empty %}
+                                <div class="no-results">No results found.</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Page end -->
+
+{% endblock %}
