@@ -1,5 +1,16 @@
 from django.contrib import admin
-from .models import ReadingText, RQuestion, RAnswer, ListeningText, LQuestion, LAnswer, WritingText, WQuestion, WAnswer, ContactMessage, UniversityList
+from .models import (ReadingText,
+                     RQuestion,
+                     RAnswer,
+                     ListeningText,
+                     LQuestion,
+                     LAnswer,
+                     WritingText,
+                     WQuestion,
+                     WAnswer,
+                     ContactMessage,
+                     UniversityList,
+                     TestResult)
 
 admin.site.register(ReadingText)
 admin.site.register(RQuestion)
@@ -16,3 +27,5 @@ admin.site.register(WAnswer)
 admin.site.register(ContactMessage)
 
 admin.site.register(UniversityList)
+
+admin.site.register(TestResult)

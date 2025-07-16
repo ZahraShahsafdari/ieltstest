@@ -14,10 +14,12 @@ urlpatterns = [
     path('readingmore/', views.readingmore, name='readingmore'),
     path('writingmore/', views.writingmore, name='writingmore'),
     path('listeningmore/', views.listeningmore, name='listeningmore'),
-
-
-
-    path('reading_test/', views.reading, name='reading'),
-    path('listening_test/', views.listening, name='listening'),
-    path('writing_test/', views.writing, name='writing'),
- ]
+    
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.user_login, name='login'),
+    path('profile/', views.profile, name='profile'),
+    path('skills/', views.skills, name='skills'),
+    path('reading_test/<int:reading_text_id>/', views.reading_test, name='reading_test'),
+    path('listening_test/<int:listening_text_id>/', views.listening_test, name='listening_test'),
+    path('writinging_test/<int:writing_text_id>/', views.writing_test, name='writing_test'),
+]

@@ -1,43 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Listening Test</title>
-</head>
-<body>
-    <h1>IELTS Listening Test</h1>
-    <!-- Audio Player -->
-    <h2>Audio</h2>
-    <audio controls>
-        <source src="{{ listening_test.laudio_file.url }}" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+{% extends 'base.html' %}
+{% load static %}
 
-    <form method="post">
-        {% csrf_token %}
-        <h2>Questions</h2>
-        {% if questions %}
-            {% for question in questions %}
-                <div>
-                    <p>{{ question.lquestion_text }}</p>
-                    {% if question.lanswers.all %}
-                        {% for answer in question.lanswers.all %}
-                            <label>
-                                <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
-                                {{ answer.lanswer_text }}
-                            </label><br>
-                        {% endfor %}
-                    {% else %}
-                        <p>No answers available for this question.</p>
-                    {% endif %}
+{% block title %} Listening test page {% endblock %}
+
+{% block content %}
+    <script>
+        let timeLeft = 300; // 5 minutes in seconds
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('test-form').submit(); // Auto-submit when time is up
+            }
+            timeLeft--;
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+    </script>
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Listening Test</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+        <section class="listeningtest-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2>Listening Test</h2>
+                        <br/>
+                        <p id="timer">5:00</p>
+                        <audio controls>
+                            <source src="{{ listening_text.laudio_file.url }}" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <form id="test-form" method="post">
+                            {% csrf_token %}
+                            <h3>Answer the following questions:</h3>
+                            {% for question in questions %}
+                                <div>
+                                    <p>{{ question.lquestion_text }}</p>
+                                    {% for answer in question.lanswers.all %}
+                                        <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}"> {{ answer.lanswer_text }}<br>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            <button class="site-btn" type="submit">Submit</button>
+                        </form>
+                    </div>
                 </div>
-            {% endfor %}
-        {% else %}
-            <p>No questions available for this listening test.</p>
-        {% endif %}
-        <br/>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+            </div>
+        </section>
+    <!-- Page end -->
+
+{% endblock %}

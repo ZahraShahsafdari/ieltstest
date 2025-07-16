@@ -1,6 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Reading Test Part --------------------------------------------------
+# User Profile Model
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+# Reading Test Part
 class ReadingText(models.Model):
     rtitle = models.CharField(max_length=200)
     rimage = models.ImageField(upload_to='reading_images/')
@@ -23,7 +28,7 @@ class RAnswer(models.Model):
     def __str__(self):
         return self.ranswer_text
 
-# Listening Test Part --------------------------------------------------
+# Listening Test Part
 class ListeningText(models.Model):
     ltitle = models.CharField(max_length=200)
     laudio_file = models.FileField(upload_to='listening_audio/')
@@ -45,14 +50,19 @@ class LAnswer(models.Model):
 
     def __str__(self):
         return self.lanswer_text
-    
-# Writing Test Part --------------------------------------------------
+
+# Writing Test Part
 class WritingText(models.Model):
-    wtitle = models.CharField(max_length=200)
-    writing_image = models.ImageField(upload_to='writing_images/', null=True) 
+    TASK_CHOICES = [
+        ('task1', 'Task 1'),
+        ('task2', 'Task 2'),
+    ]
+    writing_image = models.ImageField(upload_to='writing_images/', null=True)  # Only image upload
+    task_type = models.CharField(max_length=5, choices=TASK_CHOICES, null=True)  # Specify task type
 
     def __str__(self):
-        return self.wtitle
+        return f"{self.get_task_type_display()}"  # Display task type
+
 
 class WQuestion(models.Model):
     writing_text = models.ForeignKey(WritingText, on_delete=models.CASCADE, related_name='wquestions')
@@ -67,9 +77,16 @@ class WAnswer(models.Model):
 
     def __str__(self):
         return self.wanswer_text
+    
 
+# Test Result Model
+class TestResult(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    skill = models.CharField(max_length=100)  # Can be 'Reading', 'Listening', 'Writing'
+    score = models.IntegerField()
+    date_taken = models.DateTimeField(auto_now_add=True)
 
-# Contact --------------------------------------------------
+# Contact
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -80,7 +97,7 @@ class ContactMessage(models.Model):
     def __str__(self):
         return f"{self.name} - {self.subject}"
     
-# Universities List ----------------------------------------
+# Universities List 
 class UniversityList(models.Model):
     name = models.CharField(max_length=255)
     country = models.CharField(max_length=100)

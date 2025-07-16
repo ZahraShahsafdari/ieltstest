@@ -1,36 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Reading Test</title>
-</head>
-<body>
-    <h1>IELTS Reading Test</h1>
-    {% if reading_texts %}
-        {% for text in reading_texts %}
-            <h2>{{ text.rtitle }}</h2>
-            <img src="{{ text.rimage.url }}" alt="{{ text.rtitle }}">
-            <form method="post">
-                {% csrf_token %}
-                <h2>Questions</h2>
-                {% if text.rquestions.all %}
-                    {% for question in text.rquestions.all %}
-                        <p>{{ question.rquestion_text }}</p>
-                        {% for answer in question.ranswers.all %}
-                            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}">
-                            {{ answer.ranswer_text }}<br>
-                        {% endfor %}
-                    {% endfor %}
-                {% else %}
-                    <p>No questions available for this reading text.</p>
-                {% endif %}
-                <br/>
-                <button type="submit">Submit</button>
-            </form>
-        {% endfor %}
-    {% else %}
-        <p>No reading texts available.</p>
-    {% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Reading test page {% endblock %}
+
+{% block content %}
+    <script>
+        let timeLeft = 300; // 5 minutes in seconds
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('test-form').submit(); // Auto-submit when time is up
+            }
+            timeLeft--;
+        }
+        const timerInterval = setInterval(updateTimer, 1000);
+    </script>  
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Reading Test</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+        <section class="readingtest-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2>Reading Test</h2>
+                        <br/>
+                        <p id="timer">5:00</p>
+                        <form id="test-form" method="post">
+                            {% csrf_token %}
+                            <h3>{{ reading_text.rtitle }}</h3>
+                            <img src="{{ reading_text.rimage.url }}" alt="Reading Image" style="max-width: 100%; height: auto;">
+                            {% for question in questions %}
+                                <div>
+                                    <p>{{ question.rquestion_text }}</p>
+                                    {% for answer in question.ranswers.all %}
+                                        <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}"> {{ answer.ranswer_text }}<br>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            <button class="site-btn" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Page end -->
+
+{% endblock %}

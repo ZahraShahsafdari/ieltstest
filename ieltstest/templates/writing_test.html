@@ -1,31 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Writing Test</title>
-</head>
-<body>
-    <h1>IELTS Writing Test</h1>
-     <h3> You should spend about 20 minutes on this task. 
-            <br/>
-            Write at least 150 words.
-    </h3>
-    {% if writing_text %}
-        <h2>{{ writing_text.wtitle }}</h2>
-        
-        {% if writing_text.writing_image %} 
-            <img src="{{ writing_text.writing_image.url }}" alt="{{ writing_text.wtitle }}" style="max-width: 100%; height: auto;">
-        {% else %}
-            <p>No image available for this writing text.</p>
-        {% endif %}
-        <form method="post">
-            {% csrf_token %}
-            <textarea name="user_answer" rows="10" cols="100" placeholder="Write your answer here..."></textarea><br><br>
-            <button type="submit">Submit</button>
-        </form>
-    {% else %}
-        <p>No writing text available.</p>
-    {% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Writing test page {% endblock %}
+
+{% block content %}
+    <script>
+        let timeLeft = 300; // 5 minutes in seconds
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('test-form').submit(); // Auto-submit when time is up
+            }
+            timeLeft--;
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+    </script>
+
+    <!-- Page info -->
+    <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
+        <div class="container">
+            <div class="site-breadcrumb">
+                <a href="{% url 'ieltstest:index' %}">Home</a>
+                <span>Writing Test</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page info end -->
+
+    <!-- Page -->
+        <section class="writingtest-page spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                       <h2>{{ writing_text.task_type|title }} - {{ writing_text.wtitle }}</h2>
+                       <br/>
+                        <p id="timer">5:00</p>
+                        {% if writing_text.writing_image %}
+                            <img src="{{ writing_text.writing_image.url }}" alt="Writing Prompt Image" style="max-width: 100%; height: auto;">
+                        {% endif %}
+                        
+                        <form id="test-form" method="post">
+                            {% csrf_token %}
+                            <label for="user_answer">Your Answer:</label><br>
+                            <textarea id="user_answer" name="user_answer" rows="10" cols="50" required></textarea><br>
+                            <button class="site-btn" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Page end -->
+
+{% endblock %}
