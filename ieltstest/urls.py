@@ -14,7 +14,6 @@ urlpatterns = [
     path('readingmore/', views.readingmore, name='readingmore'),
     path('writingmore/', views.writingmore, name='writingmore'),
     path('listeningmore/', views.listeningmore, name='listeningmore'),
-    
     path('signup/', views.signup, name='signup'),
     path('login/', views.user_login, name='login'),
     path('profile/', views.profile, name='profile'),

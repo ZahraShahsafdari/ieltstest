@@ -11,14 +11,17 @@
 				<h2>Get The Best Free Online Tests</h2>
 			</div>
 			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<form class="intro-newslatter">
-						<input type="text" placeholder="Name">
-						<input type="text" class="last-s" placeholder="E-mail">
-						<button class="site-btn">Sign Up Now</button>
-					</form>
+			<div class="col-lg-10 offset-lg-1">
+				<form class="intro-newslatter" id="signupForm">
+					<input type="text" id="name" placeholder="Name" required>
+					<input type="email" id="email" class="last-s" placeholder="E-mail" required>
+					<button type="submit" class="site-btn">Sign Up Now</button>
+				</form>
+				<div id="successMessage" style="display:none; color: green; margin-top: 10px;">
+					Successfully signed up!
 				</div>
 			</div>
+		</div>
 		</div>
 	</section>
 	<!-- Hero section end -->
