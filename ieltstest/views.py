@@ -78,14 +78,10 @@ def profile(request):
     user_results = TestResult.objects.filter(user=request.user)
     return render(request, 'profile.html', {'results': user_results})
 
-def skills(request):
-    return render(request, 'skills.html')
-
 @login_required
 def reading_test(request, reading_text_id):
     reading_text = ReadingText.objects.get(id=reading_text_id)
     questions = RQuestion.objects.filter(reading_text=reading_text)
-
     if request.method == 'POST':
         score = 0
         for question in questions:
@@ -96,14 +92,12 @@ def reading_test(request, reading_text_id):
                     score += 1
         TestResult.objects.create(user=request.user, skill='Reading', score=score)
         return redirect('profile')
-
     return render(request, 'reading_test.html', {'reading_text': reading_text, 'questions': questions})
 
 @login_required
 def listening_test(request, listening_text_id):
     listening_text = ListeningText.objects.get(id=listening_text_id)
     questions = LQuestion.objects.filter(listening_text=listening_text)
-
     if request.method == 'POST':
         score = 0
         for question in questions:
@@ -114,19 +108,14 @@ def listening_test(request, listening_text_id):
                     score += 1
         TestResult.objects.create(user=request.user, skill='Listening', score=score)
         return redirect('profile')
-
     return render(request, 'listening_test.html', {'listening_text': listening_text, 'questions': questions})
 
 @login_required
 def writing_test(request, writing_text_id):
     writing_text = WritingText.objects.get(id=writing_text_id)
     questions = WQuestion.objects.filter(writing_text=writing_text)
-
     if request.method == 'POST':
         user_answer = request.POST.get('user_answer')
-        # Here you can save the answer to the database or process it as needed
-        # For now, we will just redirect to the profile
-        TestResult.objects.create(user=request.user, skill='Writing', score=0)  # Adjust score logic as needed
+        TestResult.objects.create(user=request.user, skill='Writing', score=0)
         return redirect('profile')
-
     return render(request, 'writing_test.html', {'writing_text': writing_text, 'questions': questions})
