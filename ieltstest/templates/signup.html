@@ -1,37 +1,50 @@
+<!-- signup.html -->
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Signup page {% endblock %}
+{% block title %} Sign Up Page {% endblock %}
 
 {% block content %}
-
-    <!-- Page info -->
     <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
         <div class="container">
             <div class="site-breadcrumb">
                 <a href="{% url 'ieltstest:index' %}">Home</a>
-                <span>Signup</span>
+                <span>Sign Up</span>
             </div>
         </div>
     </div>
-    <!-- Page info end -->
 
-    <!-- Page -->
-        <section class="signup-page spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <h2>Sign Up</h2>
-                        <br/>
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button class="site-btn" type="submit">Sign Up</button>
-                        </form>
-                    </div>
+    <section class="login-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2>Create Your Account</h2>
+                   <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" required><br/>
+                    <input type="text" name="first_name" placeholder="First Name" required><br/>
+                    <input type="text" name="last_name" placeholder="Last Name" required><br/>
+                    <input type="email" name="email" value="{{ email }}" readonly required><br/>
+                    <input type="password" name="password1" placeholder="Password" required><br/>
+                    <input type="password" name="password2" placeholder="Confirm Password" required><br/>
+                    <button class="site-btn" type="submit">Sign Up</button>
+                </form>
+                    {% if form.errors %}
+                        <div class="errorlist">
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
-        </section>
-    <!-- Page end -->
-
+        </div>
+    </section>
 {% endblock %}

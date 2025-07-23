@@ -1,4 +1,6 @@
 from . import views
+from .views import signin, signup, profile
+from django.contrib.auth.views import LogoutView
 from django.urls import path
 
 app_name = 'ieltstest'
@@ -14,7 +16,9 @@ urlpatterns = [
     path('readingmore/', views.readingmore, name='readingmore'),
     path('writingmore/', views.writingmore, name='writingmore'),
     path('listeningmore/', views.listeningmore, name='listeningmore'),
-    path('signup/', views.signup, name='signup'),
-    path('login/', views.user_login, name='login'),
-    path('profile/', views.profile, name='profile'),
+    path('signin/', signin, name='signin'),
+    path('signup/<str:email>/', signup, name='signup'),
+    path('profile/', profile, name='profile'),
+    path('logout/', LogoutView.as_view(next_page='ieltstest:index'), name='logout'),
+
 ]

@@ -10,7 +10,8 @@ from .models import (ReadingText,
                      WAnswer,
                      ContactMessage,
                      UniversityList,
-                     TestResult)
+                     TestScore,
+)
 
 admin.site.register(ReadingText)
 admin.site.register(RQuestion)
@@ -28,4 +29,4 @@ admin.site.register(ContactMessage)
 
 admin.site.register(UniversityList)
 
-admin.site.register(TestResult)
+admin.site.register(TestScore)

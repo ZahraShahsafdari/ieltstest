@@ -1,9 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# User Profile Model
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+# Profile
+class TestScore(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    test_name = models.CharField(max_length=100)
+    score = models.IntegerField()
+    date_taken = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.test_name} - {self.score}"
 
 # Reading Test Part
 class ReadingText(models.Model):
@@ -78,14 +85,6 @@ class WAnswer(models.Model):
     def __str__(self):
         return self.wanswer_text
     
-
-# Test Result Model
-class TestResult(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    skill = models.CharField(max_length=100)  # Can be 'Reading', 'Listening', 'Writing'
-    score = models.IntegerField()
-    date_taken = models.DateTimeField(auto_now_add=True)
-
 # Contact
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)

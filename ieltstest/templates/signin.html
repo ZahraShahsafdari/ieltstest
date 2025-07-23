@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Login page {% endblock %}
+{% block title %} SignIn page {% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="site-breadcrumb">
                 <a href="{% url 'ieltstest:index' %}">Home</a>
-                <span>Login</span>
+                <span>Account</span>
             </div>
         </div>
     </div>
@@ -21,13 +21,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h2>Login</h2>
+                        <h2>Welcome</h2>
+                        <p>Please enter your email to sign in or sign up</p>
                         <br/>
                         <form method="post">
                             {% csrf_token %}
-                            <input type="text" name="username" placeholder="Username" required>
-                            <input type="password" name="password" placeholder="Password" required>
-                            <button class="site-btn" type="submit">Login</button>
+                            <input type="text" name="email" placeholder="Email" required>
+                            <button class="site-btn" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
