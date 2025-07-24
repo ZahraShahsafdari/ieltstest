@@ -11,6 +11,7 @@ from .models import (ReadingText,
                      ContactMessage,
                      UniversityList,
                      TestScore,
+                     UserAnswer
 )
 
 admin.site.register(ReadingText)
@@ -30,3 +31,4 @@ admin.site.register(ContactMessage)
 admin.site.register(UniversityList)
 
 admin.site.register(TestScore)
+admin.site.register(UserAnswer)

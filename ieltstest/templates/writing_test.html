@@ -4,10 +4,10 @@
 {% block title %} Writing test page {% endblock %}
 
 {% block content %}
-    <script>
+       <script>
+    document.addEventListener('DOMContentLoaded', function() {
         let timeLeft = 300; // 5 minutes in seconds
         const timerElement = document.getElementById('timer');
-
         function updateTimer() {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
@@ -18,9 +18,9 @@
             }
             timeLeft--;
         }
-
         const timerInterval = setInterval(updateTimer, 1000);
-    </script>
+    });
+    </script> 
 
     <!-- Page info -->
     <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">

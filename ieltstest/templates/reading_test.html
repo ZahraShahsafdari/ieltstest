@@ -4,10 +4,10 @@
 {% block title %} Reading test page {% endblock %}
 
 {% block content %}
-    <script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
         let timeLeft = 300; // 5 minutes in seconds
         const timerElement = document.getElementById('timer');
-
         function updateTimer() {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
@@ -19,7 +19,8 @@
             timeLeft--;
         }
         const timerInterval = setInterval(updateTimer, 1000);
-    </script>  
+    });
+    </script> 
 
     <!-- Page info -->
     <div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/4.jpg' %}">
@@ -39,19 +40,21 @@
                     <div class="col-lg-8">
                         <h2>Reading Test</h2>
                         <br/>
-                        <p id="timer">5:00</p>
+                        <p id="timer">Your Time: 5:00</p>
                         <form id="test-form" method="post">
                             {% csrf_token %}
-                            <h3>{{ reading_text.rtitle }}</h3>
+                            <h4>{{ reading_text.rtitle }}</h4><br/>
                             <img src="{{ reading_text.rimage.url }}" alt="Reading Image" style="max-width: 100%; height: auto;">
                             {% for question in questions %}
                                 <div>
+                                    <br/>
                                     <p>{{ question.rquestion_text }}</p>
                                     {% for answer in question.ranswers.all %}
                                         <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}"> {{ answer.ranswer_text }}<br>
                                     {% endfor %}
                                 </div>
                             {% endfor %}
+                            <br/>
                             <button class="site-btn" type="submit">Submit</button>
                         </form>
                     </div>

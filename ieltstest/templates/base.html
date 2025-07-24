@@ -59,9 +59,9 @@
 							<li>
 								<a href="">IELTS TESTS</a>
 								<ul class="dropdown">
-									<li><a href="">Reading</a></li>
-									<li><a href="">Writing</a></li>
-									<li><a href="">Listening</a></li>
+									<li><a href="{% url 'ieltstest:signin' %}?next={% url 'ieltstest:reading_test' %}">Reading</a></li>
+									<li><a href="{% url 'ieltstest:signin' %}?next={% url 'ieltstest:writing_test' %}">Writing</a></li>
+									<li><a href="{% url 'ieltstest:signin' %}?next={% url 'ieltstest:listening_test' %}">Listening</a></li>
 								</ul>
 							</li>
 							<li><a href="{% url 'ieltstest:about' %}">ABOUT</a></li>
@@ -89,44 +89,6 @@
 							<li>+98 912 123 4556</li>
 							<li>MissShahi89@gmail.com</li>
 						</ul>
-					</div>
-					<div class="widget-item">
-						<h4>Engineering</h4>
-						<ul>
-							<li><a href="">Applied Studies</a></li>
-							<li><a href="">Computer Engineering</a></li>
-							<li><a href="">Software Engineering</a></li>
-							<li><a href="">Informational Engineering</a></li>
-							<li><a href="">System Engineering</a></li>
-						</ul>
-					</div>
-					<div class="widget-item">
-						<h4>Graphic Design</h4>
-						<ul>
-							<li><a href="">Applied Studies</a></li>
-							<li><a href="">Computer Engineering</a></li>
-							<li><a href="">Software Engineering</a></li>
-							<li><a href="">Informational Engineering</a></li>
-							<li><a href="">System Engineering</a></li>
-						</ul>
-					</div>
-					<div class="widget-item">
-						<h4>Development</h4>
-						<ul>
-							<li><a href="">Applied Studies</a></li>
-							<li><a href="">Computer Engineering</a></li>
-							<li><a href="">Software Engineering</a></li>
-							<li><a href="">Informational Engineering</a></li>
-							<li><a href="">System Engineering</a></li>
-						</ul>
-					</div>
-					<div class="widget-item">
-						<h4>Newsletter</h4>
-						<form class="footer-newslatter">
-							<input type="email" placeholder="E-mail">
-							<button class="site-btn">Subscribe</button>
-							<p>*We don’t spam</p>
-						</form>
 					</div>
 				</div>
 			</div>

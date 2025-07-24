@@ -20,5 +20,7 @@ urlpatterns = [
     path('signup/<str:email>/', signup, name='signup'),
     path('profile/', profile, name='profile'),
     path('logout/', LogoutView.as_view(next_page='ieltstest:index'), name='logout'),
-
+    path('reading_test/', views.reading_test, name='reading_test'),
+    path('listening_test/', views.listening_test, name='listening_test'),
+    path('writing_test/', views.writing_test, name='writing_test'),
 ]

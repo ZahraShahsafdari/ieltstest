@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 # Profile
 class TestScore(models.Model):
@@ -11,6 +12,20 @@ class TestScore(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.test_name} - {self.score}"
+
+
+# User Answer Model
+class UserAnswer(models.Model):
+    test_score = models.ForeignKey(TestScore, on_delete=models.CASCADE, related_name='user_answers')
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
+    object_id = models.PositiveIntegerField(null=True)
+    question = GenericForeignKey('content_type', 'object_id')
+    user_answer = models.TextField()    
+    is_correct = models.BooleanField()     
+
+    def __str__(self):
+        return f"Answer by {self.test_score.user.username} for {self.test_score.test_name}"
+
 
 # Reading Test Part
 class ReadingText(models.Model):
